@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "393116103135",
+    "firebase_url": "https://mcommerce-9813d.firebaseio.com",
+    "project_id": "mcommerce-9813d",
+    "storage_bucket": "mcommerce-9813d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:393116103135:android:d2d0191a75af5d0a",
+        "android_client_info": {
+          "package_name": "com.projekti.mcommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "393116103135-1oep215id2jeodfhvv66cn5a5quge2ro.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.projekti.mcommerce",
+            "certificate_hash": "55c05773cf9629b4842a52e2d0a80819888aef40"
+          }
+        },
+        {
+          "client_id": "393116103135-b5t8ilh57run6irvrbs5vssgidimmmjb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvf3nNVIM4qcWhGD73lfrZl6ciShKPmjs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "393116103135-b5t8ilh57run6irvrbs5vssgidimmmjb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
