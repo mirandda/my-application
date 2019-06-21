@@ -11,9 +11,7 @@
         android:id="@+id/select_product_image"
         android:layout_width="283dp"
         android:layout_height="134dp"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
         android:cropToPadding="false"
         android:scaleType="centerCrop"
         android:src="@drawable/cam" />
