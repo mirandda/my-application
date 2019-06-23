@@ -48,12 +48,13 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
+        //ikona e cart
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+                startActivity(intent);
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -149,8 +150,11 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_cart) {
-            // Handle the camera action
-        } else if (id == R.id.nav_orders) {
+
+            Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_orders) {
 
         } else if (id == R.id.nav_settings) {
             Intent intent = new  Intent (HomeActivity.this, SettingsActivity.class);
