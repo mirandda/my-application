@@ -1,5 +1,5 @@
 package com.projekti.mcommerce;
-
+//i shfaqim ato qe jon ne cartItemsLayout
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -38,7 +38,7 @@ public class CartActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         NextProcessBtn = (Button)findViewById(R.id.next_process_btn);
-        txtTotalAmount=(TextView)findViewById(R.id.total_price);
+    //    txtTotalAmount=(TextView)findViewById(R.id.total_price);
         NextProcessBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,6 +58,7 @@ public class CartActivity extends AppCompatActivity {
     @Override
     protected  void  onStart()
     {
+
         super.onStart();
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
         FirebaseRecyclerOptions<Cart> options=
@@ -70,8 +71,9 @@ public class CartActivity extends AppCompatActivity {
         @Override
         protected void onBindViewHolder(@NonNull CartViewHolder holder, int position, @NonNull Cart model) {
             holder.txtProductQuantity.setText("Quantity = "+model.getQuantity());
-            holder.txtProductName.setText("Price"+model.getPname()+"$");
-            holder.txtProductPrice.setText(model.getPrice());
+            holder.txtProductPrice.setText("Price = "+model.getPrice()+"$");
+            holder.txtProductName.setText(model.getPname());
+
 
         }
 

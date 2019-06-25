@@ -50,7 +50,9 @@ public class AdminAddNewProductActivity extends AppCompatActivity
 
 
         CategoryName = getIntent().getExtras().get("category").toString();
+        //"Product Image" foto ruhet ne firebase storage
         ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Product Images");
+        //"Products" fotot dhe te dhenat tjera qe i shtoj ne aktivitet  ruhen ne firebase Database
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
 
 
@@ -80,7 +82,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity
         });
     }
 
-
+    //permes ketij funksioni admini e zgjedh foton nga gallery
 
     private void OpenGallery()
     {
@@ -89,6 +91,9 @@ public class AdminAddNewProductActivity extends AppCompatActivity
         galleryIntent.setType("image/*");
         startActivityForResult(galleryIntent, GalleryPick);
     }
+    //deri ktu osht funk per me zgjedh foton
+
+
 
 
     @Override
@@ -98,7 +103,9 @@ public class AdminAddNewProductActivity extends AppCompatActivity
 
         if (requestCode==GalleryPick  &&  resultCode==RESULT_OK  &&  data!=null)
         {
+            //e merr linkun e fotot, qet link ma vone e perdorim me qu foton ne storage
             ImageUri = data.getData();
+            // E shfaq foton
             InputProductImage.setImageURI(ImageUri);
         }
     }
@@ -127,8 +134,10 @@ public class AdminAddNewProductActivity extends AppCompatActivity
         {
             Toast.makeText(this, "Please write product name...", Toast.LENGTH_SHORT).show();
         }
+        //nese gjithqka osht ok me else if-at atehere i ruajm ne storage
         else
         {
+            //krijojme kete metode dhe i ruajme te dhenat e produktit foton emrin description price
             StoreProductInformation();
         }
     }
@@ -141,7 +150,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity
         loadingBar.setMessage("Dear Admin, please wait while we are adding the new product.");
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
-
+        //Calendar perdoret per me me rujt kohen dhe daten ne te cilin ne po e krijojme produktin
         Calendar calendar = Calendar.getInstance();
 
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
@@ -149,10 +158,10 @@ public class AdminAddNewProductActivity extends AppCompatActivity
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(calendar.getTime());
-
+        //productRandomKey kurr se perserite kohen e njejt
         productRandomKey = saveCurrentDate + saveCurrentTime;
 
-
+        //vendos linkun e fotos ne storage
         final StorageReference filePath = ProductImagesRef.child(ImageUri.getLastPathSegment() + productRandomKey + ".jpg");
 
         final UploadTask uploadTask = filePath.putFile(ImageUri);
@@ -180,7 +189,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity
                         {
                             throw task.getException();
                         }
-
+                            //ta jep url por jo linkun
                         downloadImageUrl = filePath.getDownloadUrl().toString();
                         return filePath.getDownloadUrl();
                     }
@@ -190,10 +199,11 @@ public class AdminAddNewProductActivity extends AppCompatActivity
                     {
                         if (task.isSuccessful())
                         {
+                            //kur fotoja vendoset suksesshem mundemi me pa linkun
                             downloadImageUrl = task.getResult().toString();
 
                             Toast.makeText(AdminAddNewProductActivity.this, "got the Product image Url Successfully...", Toast.LENGTH_SHORT).show();
-
+                            //i ruajm te dhenat ne database permes kesaj metode
                             SaveProductInfoToDatabase();
                         }
                     }
@@ -207,6 +217,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity
     private void SaveProductInfoToDatabase()
     {
         HashMap<String, Object> productMap = new HashMap<>();
+        //keto te dhena ruhane ne "Products" ne databaze dmth te dhenat te cilat i shton admini
         productMap.put("pid", productRandomKey);
         productMap.put("date", saveCurrentDate);
         productMap.put("time", saveCurrentTime);

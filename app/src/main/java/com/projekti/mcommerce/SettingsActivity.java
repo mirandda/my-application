@@ -84,6 +84,7 @@ public class SettingsActivity extends AppCompatActivity
                 }
                 else
                 {
+                    //kur useri don mi ndryshu oveten inft por jo edhe foton e thirrim kete funk.
                     updateOnlyUserInfo();
                 }
             }
@@ -94,6 +95,7 @@ public class SettingsActivity extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                // checker = "clicked"; i bjen qe e thir metoden      userInfoSaved();();
                 checker = "clicked";
 
                 CropImage.activity(imageUri)
@@ -130,7 +132,6 @@ public class SettingsActivity extends AppCompatActivity
         {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             imageUri = result.getUri();
-
             profileImageView.setImageURI(imageUri);
         }
         else

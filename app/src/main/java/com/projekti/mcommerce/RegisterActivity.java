@@ -70,7 +70,7 @@ public class RegisterActivity extends AppCompatActivity {
             loadingBar.setMessage("Please wait, while we are checking the credentials");
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
-
+            ///metoda per validim
             ValidatePhoneNumber(name, phone,password);
             }
 
@@ -102,7 +102,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                         else {
                             loadingBar.dismiss();
-                        Toast.makeText(RegisterActivity.this,"Networ error: try another time", Toast.LENGTH_SHORT) .show();                       }
+                        Toast.makeText(RegisterActivity.this,"Network error: try another time", Toast.LENGTH_SHORT) .show();                       }
                     }
                 });
             }

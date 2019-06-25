@@ -101,13 +101,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void AllowAccesToAccount(final String phone, final String password) {
-
+        //per me bo remember
         if(chkBoxRememberMe.isChecked())
         {
             Paper.book().write(Prevalent.UserPhoneKey, phone);
             Paper.book().write(Prevalent.UserPasswordKey, password);
         }
-
+            //krijojme reference ne firebase
         final DatabaseReference RootRef;
         RootRef = FirebaseDatabase.getInstance().getReference();
 
@@ -116,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
                 if(dataSnapshot.child(parentDbName).child(phone).exists())
-                {
+                {//usersData ka reference te Users(Model) i merr t'dhanata dhe i kthen permes konstuktorve
                     Users usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Users.class);
 
                     if(usersData.getPhone().equals(phone))

@@ -31,11 +31,10 @@ public class MainActivity extends AppCompatActivity {
         joinNowButton=(Button)findViewById(R.id.main_join_now_btn);
        loginButton=(Button)findViewById(R.id.main_login_btn);
        loadingBar=new ProgressDialog(this);
-
         Paper.init(this);
 
 
-
+            //kur klikojme ne butonin  login te main, na qon te aktiviteti i loginit
 
        loginButton.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -89,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this,"Please wait, you are already logged in.",Toast.LENGTH_LONG).show();
                             loadingBar.dismiss();
                             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                            //kur ja bojm remember per me majt men cili user u kon
                             Prevalent.currentOnlineUser = usersData;
                             startActivity(intent);
                         }

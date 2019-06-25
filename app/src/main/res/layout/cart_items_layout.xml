@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorPrimaryDark"
-        android:padding="15dp"
+        android:padding="10dp"
 
 
         >
@@ -22,8 +22,9 @@
             android:layout_height="wrap_content"
             android:text="Product Name"
             android:textColor="@android:color/white"
-            android:textSize="15dp"
+            android:textSize="14dp"
             android:layout_marginLeft="5dp"
+            android:textStyle="bold"
 
 
             />
@@ -34,6 +35,8 @@
             android:text="Product Quality"
             android:textColor="@android:color/white"
             android:textSize="15dp"
+            android:textAlignment="viewEnd"
+            android:layout_marginLeft="5dp"
             android:layout_alignParentEnd="true"
 
     />

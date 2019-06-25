@@ -43,7 +43,9 @@ public class HomeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("Products");
+
         Paper.init(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Home");
@@ -69,8 +71,10 @@ public class HomeActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
-        //per remember me
+        //per me qit emrin e perdoruesit
         userNameTextView.setText(Prevalent.currentOnlineUser.getName());
+        // per me shfaq  foton e profilit tek home activiy
+        Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
         layoutManager =new LinearLayoutManager(this);
@@ -79,6 +83,7 @@ public class HomeActivity extends AppCompatActivity
     }
     protected  void  onStart()
     {
+        //i marrim te dhanat qe i vendos admini dhe i vendosim ne home activity,Products osht ne databaze
         super.onStart();
         FirebaseRecyclerOptions<Products> options=
                 new FirebaseRecyclerOptions.Builder<Products>().setQuery(ProductsRef, Products.class).build();
@@ -89,7 +94,9 @@ public class HomeActivity extends AppCompatActivity
                         holder.txtproductName.setText(model.getPname());
                         holder.txtProductDescription.setText(model.getDescription());
                         holder.txtProductPrice.setText("Price = "+model.getPrice()+"$");
+                        //picao na sherben mi marr fotot nga db
                         Picasso.get().load(model.getImage()).into(holder.imageView);
+                        //kur klikon me ni produkt shkon te productDetails Activity
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -136,9 +143,11 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        //masi ja kom bo comment action_setings nuk na vyn qikjo pjese
+     //  if (id == R.id.action_settings)
+    //   {
+      //      return true;
+     //   }
 
         return super.onOptionsItemSelected(item);
     }
@@ -156,19 +165,22 @@ public class HomeActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_orders) {
 
-        } else if (id == R.id.nav_settings) {
+        } else if (id == R.id.nav_settings)
+        {
             Intent intent = new  Intent (HomeActivity.this, SettingsActivity.class);
             startActivity(intent);
-
-
-        } else if (id == R.id.nav_logout) {
-
-        } else if (id == R.id.nav_categories) {
+        }
+        else if (id == R.id.nav_logout) {
             Paper.book().destroy();
             Intent intent = new Intent(HomeActivity.this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
+
+
+        }
+        else if (id == R.id.nav_categories)
+        {
 
         }
 
