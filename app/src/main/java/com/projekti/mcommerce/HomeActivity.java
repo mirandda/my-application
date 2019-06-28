@@ -71,7 +71,7 @@ public class HomeActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
-        //per me qit emrin e perdoruesit
+        //per me qit emrin e perdoruesit aktual
         userNameTextView.setText(Prevalent.currentOnlineUser.getName());
         // per me shfaq  foton e profilit tek home activiy
         Picasso.get().load(Prevalent.currentOnlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
@@ -94,6 +94,7 @@ public class HomeActivity extends AppCompatActivity
                         holder.txtproductName.setText(model.getPname());
                         holder.txtProductDescription.setText(model.getDescription());
                         holder.txtProductPrice.setText("Price = "+model.getPrice()+"$");
+
                         //picao na sherben mi marr fotot nga db
                         Picasso.get().load(model.getImage()).into(holder.imageView);
                         //kur klikon me ni produkt shkon te productDetails Activity
@@ -163,9 +164,8 @@ public class HomeActivity extends AppCompatActivity
             Intent intent = new Intent(HomeActivity.this, CartActivity.class);
             startActivity(intent);
         }
-        else if (id == R.id.nav_orders) {
-
-        } else if (id == R.id.nav_settings)
+        //else if (id == R.id.nav_orders) { }
+        else if (id == R.id.nav_settings)
         {
             Intent intent = new  Intent (HomeActivity.this, SettingsActivity.class);
             startActivity(intent);
@@ -179,10 +179,8 @@ public class HomeActivity extends AppCompatActivity
 
 
         }
-        else if (id == R.id.nav_categories)
-        {
+     //   else if (id == R.id.nav_categories){}
 
-        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

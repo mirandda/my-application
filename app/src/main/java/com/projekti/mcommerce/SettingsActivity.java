@@ -204,7 +204,6 @@ public class SettingsActivity extends AppCompatActivity
                                 myUrl = downloadUrl.toString();
 
                                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
-
                                 HashMap<String, Object> userMap = new HashMap<>();
                                 userMap. put("name", fullNameEditText.getText().toString());
                                 userMap. put("address", addressEditText.getText().toString());

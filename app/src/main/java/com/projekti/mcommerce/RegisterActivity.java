@@ -71,7 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
             ///metoda per validim
-            ValidatePhoneNumber(name, phone,password);
+            ValidatePhoneNumber(name,phone,password);
             }
 
     }
@@ -84,6 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         public void onDataChange(@NonNull DataSnapshot dataSnapshot)
         {
+
             if(!(dataSnapshot.child("Users").child(phone).exists())){
                 HashMap<String, Object> userdataMap=new HashMap<>();
                 userdataMap.put("name",name);
@@ -94,7 +95,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
-                            Toast.makeText(RegisterActivity.this,"Congratulations,Your account has been sucesfuly created", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this,"Congratulations,Your account has been successfully created", Toast.LENGTH_SHORT).show();
                             loadingBar.dismiss();
                             Intent intent=new Intent(RegisterActivity.this, LoginActivity.class);
                             startActivity(intent);
@@ -102,7 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
                         }
                         else {
                             loadingBar.dismiss();
-                        Toast.makeText(RegisterActivity.this,"Network error: try another time", Toast.LENGTH_SHORT) .show();                       }
+                            Toast.makeText(RegisterActivity.this,"Network error: Please try another time", Toast.LENGTH_SHORT) .show();                       }
                     }
                 });
             }
@@ -110,8 +111,7 @@ public class RegisterActivity extends AppCompatActivity {
                 {
                     Toast.makeText(RegisterActivity.this,"This"+phone+" already exists",LENGTH_SHORT).show();
                     loadingBar.dismiss();
-                    Toast.makeText(RegisterActivity.this,"This"+phone+"Please try again using another phone number",LENGTH_SHORT).show();
-
+                    Toast.makeText(RegisterActivity.this,"Please try again using another phone number",LENGTH_SHORT).show();
                     Intent intent=new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(intent);
                 }

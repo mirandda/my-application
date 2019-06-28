@@ -44,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
 
         loadingBar=new ProgressDialog(this);
         chkBoxRememberMe=(com.rey.material.widget.CheckBox)findViewById(R.id.remember_me_chkb);
+        //paper perdoret me perdor librine e remember me
         Paper.init(this);
 
         LoginButton.setOnClickListener(new View.OnClickListener() {
@@ -96,11 +97,11 @@ public class LoginActivity extends AppCompatActivity {
             loadingBar.setCanceledOnTouchOutside(false);
             loadingBar.show();
 
-            AllowAccesToAccount(phone,password);
+            AllowAccessToAccount(phone,password);
         }
     }
 
-    private void AllowAccesToAccount(final String phone, final String password) {
+    private void AllowAccessToAccount(final String phone, final String password) {
         //per me bo remember
         if(chkBoxRememberMe.isChecked())
         {
@@ -117,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
             {
                 if(dataSnapshot.child(parentDbName).child(phone).exists())
                 {//usersData ka reference te Users(Model) i merr t'dhanata dhe i kthen permes konstuktorve
+                    //Users class i merr te dhanat prej databaze dhe i kthen qitu
                     Users usersData = dataSnapshot.child(parentDbName).child(phone).getValue(Users.class);
 
                     if(usersData.getPhone().equals(phone))
@@ -126,7 +128,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             if(parentDbName.equals("Admins"))
                             {
-                                Toast.makeText(LoginActivity.this," Welcome Admin, you are logged in succesfully.....",Toast.LENGTH_LONG).show();
+                                Toast.makeText(LoginActivity.this," Welcome Admin, you are logged in successfully.....",Toast.LENGTH_LONG).show();
                                 loadingBar.dismiss();
                                 Intent intent = new Intent(LoginActivity.this, AdminCategoryActivity.class);
                                 startActivity(intent);

@@ -48,7 +48,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_add_new_product);
 
-
+        //kur klikojm me nja foto te AdminCategoryActivity atehere  shaqet emri i qasaj gjate kalimit t ky aktivitet
         CategoryName = getIntent().getExtras().get("category").toString();
         //"Product Image" foto ruhet ne firebase storage
         ProductImagesRef = FirebaseStorage.getInstance().getReference().child("Product Images");
@@ -199,7 +199,7 @@ public class AdminAddNewProductActivity extends AppCompatActivity
                     {
                         if (task.isSuccessful())
                         {
-                            //kur fotoja vendoset suksesshem mundemi me pa linkun
+                            //kur fotoja vendoset suksesshem , shfaqet linku
                             downloadImageUrl = task.getResult().toString();
 
                             Toast.makeText(AdminAddNewProductActivity.this, "got the Product image Url Successfully...", Toast.LENGTH_SHORT).show();

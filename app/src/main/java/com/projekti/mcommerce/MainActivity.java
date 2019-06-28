@@ -51,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
+
+
+
         //Nese userit ja kemi bo remember me per me na leju me hi direkt ne aplikacion pa pas nevoj mu kyq -->
             String UserPhoneKey = Paper.book().read(Prevalent.UserPhoneKey);
         String UserPasswordKey = Paper.book().read(Prevalent.UserPasswordKey);

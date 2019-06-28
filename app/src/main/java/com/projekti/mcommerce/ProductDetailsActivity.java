@@ -34,7 +34,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
     private TextView productPrice, productDescription, productName;
     private String productID="";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +48,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         productDescription=(TextView) findViewById(R.id.product_description_details);
 
         productName=(TextView) findViewById(R.id.product_name_details);
+        //******************
         getProductDetails(productID);
         //ja vendos clickun butonit
         addToCartButton.setOnClickListener(new View.OnClickListener() {
@@ -58,9 +58,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
             }
         });
-        
-
-
 
     }
 
@@ -85,7 +82,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         cartMap.put("date", saveCurrentDate);
         cartMap.put("time",saveCurrentTime);
         cartMap.put("quantity", numberButton.getNumber());
-        cartMap.put("discount","");
+        //cartMap.put("discount","");
         //refrenca per karte(cart)
         //kur useri vendos produkte ne cart
         cartListRef.child("User View").child(Prevalent.currentOnlineUser.getPhone())
@@ -115,10 +112,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
-
     private void getProductDetails(String productID) {
         DatabaseReference productsRef= FirebaseDatabase.getInstance().getReference().child("Products");
         productsRef.child(productID).addValueEventListener(new ValueEventListener() {
